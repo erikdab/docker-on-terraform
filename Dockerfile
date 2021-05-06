@@ -1,13 +1,14 @@
-FROM node:10
+FROM node:14
 
 RUN mkdir /myapp
 
 # Create app directory
 WORKDIR /myapp
 
-COPY ./package.json /myapp/package.json
-COPY ./package-lock.json /myapp/package-lock.json
+# Copy app info and dependencies list
+COPY package*.json /myapp
 
+# Install dependencies
 RUN npm install
 RUN npm install -g nodemon
 
